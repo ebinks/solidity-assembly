@@ -1,5 +1,4 @@
 pragma solidity ^0.4.21;
-//import "./Called.sol";
 
 contract Called {
     uint public n;
