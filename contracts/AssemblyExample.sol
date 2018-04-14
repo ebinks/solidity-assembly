@@ -49,7 +49,7 @@ contract AssemblyExample {
             mstore(0x40, add(x,0x20)) // update free memory pointer
         }
         
-        uint256 n = ans;
+        n = ans;
         return n;
     }
     
