@@ -23,9 +23,6 @@ contract AssemblyExample {
     uint256 public n;
     
     function delegateCallAdder(address _addr, uint256 _a, uint256 _b) public returns (uint) {
-        
-        //Adder a = Adder(_addr);
-        //address addr = address(a);
         bytes4 sig = bytes4(keccak256("sum(uint256,uint256)")); // function signature
         uint ans;
         
@@ -54,8 +51,6 @@ contract AssemblyExample {
     }
     
     function callAdder(address _addr, uint256 _a, uint256 _b) public returns (uint ans) {
-        //Adder a = Adder(_addr);
-        //address addr = address(a);
         bytes4 sig = bytes4(keccak256("sum(uint256,uint256)")); // function signature
         
         assembly {
@@ -81,8 +76,6 @@ contract AssemblyExample {
     }
     
     function callUpdateN(address _addr, uint _n) public returns (uint ans) {
-        Called c = Called(_addr);
-        address addr = address(c);
         bytes4 sig = bytes4(keccak256("updateN(uint256)")); // function signature
         
         assembly {
@@ -93,7 +86,7 @@ contract AssemblyExample {
             mstore (add(x, 0x04), _n) // 32 bytes -  place argument next to 4-bit signature
             
             let ret := call (gas, 
-                addr,
+                _addr,
                 0, // no value
                 x, // input
                 0x24, // input size = 32 + 4 bytes
